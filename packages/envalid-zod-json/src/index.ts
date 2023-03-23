@@ -1,8 +1,16 @@
 import * as envalid from 'envalid'
-import { ZodError, ZodSchema } from 'zod'
+import { ZodError, ZodSchema, ZodTypeDef } from 'zod'
 import { prettifyZodError } from './pretty-zod-error.js'
 
-const zodJSONValidator = <U, T extends ZodSchema<U>>(schema: T) =>
+const zodJSONValidator = <
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Output = any,
+  Def extends ZodTypeDef = ZodTypeDef,
+  Input = Output,
+  T extends ZodSchema<Output, Def, Input> = ZodSchema<Output, Def, Input>,
+>(
+  schema: T,
+) =>
   envalid.makeValidator((x) => {
     try {
       const jsonParsed = JSON.parse(x)
