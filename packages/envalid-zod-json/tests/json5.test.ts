@@ -1,6 +1,6 @@
 import { describe, it } from 'mocha'
 import { assert } from 'chai'
-import zodJSONValidator from '../src/index.js'
+import { zodJSON5Validator } from '../src/index.js'
 import { z } from 'zod'
 import * as envalid from 'envalid'
 import { envalidErrorFormatter, ReporterOptions } from 'envalid'
@@ -45,12 +45,17 @@ const throwingReporter = <T>({ errors }: ReporterOptions<T>) => {
 const identifyFormatter = <T>(t: T) => t
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-describe('zodJSONValidator', () => {
+describe('zodJSON5Validator', () => {
   const testCases: TestCase<any>[] = [
     { input: '3', schema: z.number(), output: 3 },
     { input: '"3"', schema: z.string(), output: '3' },
     { input: '[]', schema: z.array(z.any()), output: [] },
     { input: '{}', schema: z.object({}), output: {} },
+    {
+      input: '{foo: .5}',
+      schema: z.object({ foo: z.number() }),
+      output: { foo: 0.5 },
+    },
     { input: '"pouet"', schema: z.null() },
     { input: '{eqdsq}', schema: z.object({}) },
     { input: '{"foo": "bar"}', schema: z.object({ foo: z.literal('baz') }) },
@@ -63,7 +68,7 @@ describe('zodJSONValidator', () => {
   testCases.forEach((testCase) => {
     if (shouldPass(testCase)) {
       it(`should parse with shape ${testCase.schema} and input ${testCase.input}`, async () => {
-        const validator = zodJSONValidator(testCase.schema)
+        const validator = zodJSON5Validator(testCase.schema)
         const actual = envalid.customCleanEnv(
           { someEnv: testCase.input },
           { someEnv: validator() },
@@ -74,7 +79,7 @@ describe('zodJSONValidator', () => {
       })
     } else {
       it(`should throw with shape ${testCase.schema} and input ${testCase.input}`, async () => {
-        const validator = zodJSONValidator(testCase.schema)
+        const validator = zodJSON5Validator(testCase.schema)
         assert.throws(() => {
           envalid.customCleanEnv(
             { someEnv: testCase.input },
