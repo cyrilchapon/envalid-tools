@@ -103,6 +103,7 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   "references": [
-    { "path": "./packages/envalid-zod-json/tsconfig.build.json" }
+    { "path": "./packages/envalid-zod-json/tsconfig.build.json" },
+    { "path": "./packages/envalid-hex-string/tsconfig.build.json" }
   ]
 }
