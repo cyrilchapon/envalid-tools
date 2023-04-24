@@ -3,9 +3,8 @@
   "compilerOptions": {
     "composite": true,
     "rootDir": "src",
-    "outDir": "dist"
+    "outDir": "dist/esm",
+    // "declarationDir": "dist/types"
   },
-  "include": [
-    "src/*.ts"
-  ],
+  "include": ["src/*.ts"]
 }
