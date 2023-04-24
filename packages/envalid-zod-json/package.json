@@ -1,22 +1,8 @@
 {
   "name": "@chimanos/envalid-zod-json",
-  "version": "0.0.3-1",
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/esm/index.d.ts",
-        "default": "./dist/esm/index.js"
-      },
-      "require": {
-        "types": "./dist/cjs/index.d.ts",
-        "default": "./dist/cjs/index.js"
-      },
-      "default": "./dist/esm/index.js"
-    }
-  },
-  "main": "./dist/cjs/index",
-  "types": "./dist/cjs/index.d.ts",
+  "version": "0.0.3-3",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "license": "MIT",
   "author": "Cyril CHAPON (https://github.com/cyrilchapon)",
   "repository": {
@@ -25,9 +11,7 @@
     "directory": "packages/envalid-zod-json"
   },
   "scripts": {
-    "build": "yarn build:esm && yarn build:cjs",
-    "build:esm": "tsc -p tsconfig.build.json",
-    "build:cjs": "tsc -p tsconfig.build.cjs.json",
+    "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.build.json --noEmit",
     "test": "mocha",
     "dev:test": "mocha --watch --parallel",
@@ -52,6 +36,7 @@
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "json5": "^2.2.3",
     "mocha": "^10.2.0",
     "nanospy": "^0.5.0",
     "prettier": "^2.8.4",
