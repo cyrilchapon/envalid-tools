@@ -1,6 +1,6 @@
 import * as envalid from 'envalid'
 import { ZodError, ZodSchema, ZodTypeDef } from 'zod'
-import { prettifyZodError } from './pretty-zod-error.js'
+import { prettifyZodError } from './pretty-zod-error'
 import JSON5 from 'json5'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,6 +1,6 @@
 import { describe, it } from 'mocha'
 import { assert } from 'chai'
-import { zodJSON5Validator } from '../src/index.js'
+import { zodJSON5Validator } from '../src/index'
 import { z } from 'zod'
 import * as envalid from 'envalid'
 import { envalidErrorFormatter, ReporterOptions } from 'envalid'
