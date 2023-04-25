@@ -1,8 +1,22 @@
 {
   "name": "@chimanos/envalid-zod-json",
-  "version": "0.0.3-3",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "version": "0.0.3-4",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  },
   "license": "MIT",
   "author": "Cyril CHAPON (https://github.com/cyrilchapon)",
   "repository": {
@@ -11,8 +25,10 @@
     "directory": "packages/envalid-zod-json"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
-    "typecheck": "tsc -p tsconfig.build.json --noEmit",
+    "build:cjs": "tsc -p tsconfig.build.cjs.json",
+    "build:esm": "tsc -p tsconfig.build.esm.json",
+    "build": "yarn build:esm && yarn build:cjs",
+    "typecheck": "tsc -p tsconfig.build.esm.json --noEmit",
     "test": "mocha",
     "dev:test": "mocha --watch --parallel",
     "lint": "eslint src",
