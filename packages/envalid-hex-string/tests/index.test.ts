@@ -1,10 +1,10 @@
 import { describe, it } from 'mocha'
 import { assert } from 'chai'
-import { HexStringValidatorOptions, hexStringValidator } from '../src/index.js'
+import { HexStringValidatorOptions, hexStringValidator } from '../src/index'
 import * as envalid from 'envalid'
 import { envalidErrorFormatter, ReporterOptions } from 'envalid'
-import { testCaseGroups } from './test-cases/index.js'
-import { shouldPass } from './test-cases/_base.js'
+import { testCaseGroups } from './test-cases/index'
+import { shouldPass } from './test-cases/_base'
 
 type EnvalidErrors<T> = ReporterOptions<T>['errors']
 type EnvalidLogger = (data: string) => void

@@ -1,6 +1,6 @@
-import { HexStringValidatorOptions } from '../../index.js'
-import { TestCase } from '../_base.js'
-import commonOpts from './_common-opts.js'
+import { HexStringValidatorOptions } from '../../index'
+import { TestCase } from '../_base'
+import commonOpts from './_common-opts'
 
 const options: HexStringValidatorOptions = {
   ...commonOpts,

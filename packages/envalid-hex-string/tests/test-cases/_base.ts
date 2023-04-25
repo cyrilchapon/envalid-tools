@@ -1,4 +1,4 @@
-import { HexStringValidatorOptions } from '../index.js'
+import { HexStringValidatorOptions } from '../index'
 
 export type PassingTestCase = {
   options: HexStringValidatorOptions
